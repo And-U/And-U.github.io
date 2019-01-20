@@ -31,7 +31,7 @@ Burp Suite 是用于攻击web 应用程序的集成平台。它包含了许多�
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">和你</h3>
+    <h3 class="subtitle">无视CDN查找网站真实IP</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -48,14 +48,24 @@ Burp Suite 是用于攻击web 应用程序的集成平台。它包含了许多�
     <div class="section">
         <div class="article">
     <div class="main">
-        <h1 class="title">和你</h1>
+        <h1 class="title">无视CDN查找网站真实IP</h1>
         <div class="stuff">
-            <span>十二月 03, 2018</span>
+            <span>一月 20, 2019</span>
             
 
         </div>
         <div class="content markdown">
-            
+            <p>1：先查一下分站的IP，很多情况是主站使用了 CDN 而分站没有使用。<br>类似这样 <a href="http://www.code521.com" target="_blank" rel="noopener">www.code521.com</a> 使用了CDN ,那么 mail.code521.com blog.code521.com 等二级域名可能没有使用CDN,对于这种情况可以通过查询二级域名来获得真实的IP地址，值得注意的是 通过二级域名查询出来的IP地址不一定是主站的IP地址，有可能做了A记录，但是很有可能 在一个C端内,此时针对整个C端直接 扫开放了80端口的，一个一个访问即可。</p>
+<p>2：用国外主机来ping<br>大部分CDN提供商只针对国内市场，而对国外市场几乎是不做CDN，所以有很大的几率会直接解析到真实IP。其实这个方法根本不用上国外vpn，因为你上国外vpn的ping本质，就是使用国外dns（那台vpn服务器使用的dns）查询域名而已，所以只需要：nslookup xxx.com 国外dns，就行了，例如：nslookup xxx.com 8.8.8.8，提示：你要找冷门国外DNS才行，像谷歌的DNS，国内用的人越来越多了，很多CDN提供商都把谷歌DNS作为国内市场之一，所以，你查到的结果会和国内差不了多少</p>
+<p>3：直接ping xxx.com而不是<a href="http://www.xxx.com" target="_blank" rel="noopener">www.xxx.com</a><br>ping 命令这样写 ping xxx.com 而不是 ping <a href="http://www.xxx.com" target="_blank" rel="noopener">www.xxx.com</a> . ping xxx.com一般都会是真实IP，因为了解到现有很多CDN厂商基本只要求把<a href="http://www.xxx.com" target="_blank" rel="noopener">www.xxx.com</a> cname到cdn主服务器上去。<a href="http://www.xxx.com" target="_blank" rel="noopener">www.xxx.com</a> 和 xxx.com是两条独立的解析记录 一般只会把 <a href="http://www.xxx.com做" target="_blank" rel="noopener">www.xxx.com做</a> CDN</p>
+<p>4：看历史纪录<br>这个很有效，几乎能查大部分<br>指的是查找域名历史解析记录，因为域名在上CDN之前用的IP，很有可能就是CDN的真实源IP地址。<br>有个专门的网站提供域名解析历史记录查询：<br><a href="http://toolbar.netcraft.com/site_report?url=www.xxx.com" target="_blank" rel="noopener">http://toolbar.netcraft.com/site_report?url=www.xxx.com</a></p>
+<p><a href="https://dnsdb.io" target="_blank" rel="noopener">https://dnsdb.io</a> </p>
+<p><a href="https://scans.io/study/sonar.fdns" target="_blank" rel="noopener">https://scans.io/study/sonar.fdns</a></p>
+<p><a href="https://github.com/samarudge/dnsyo" target="_blank" rel="noopener">https://github.com/samarudge/dnsyo</a></p>
+<p>5：phpinfo<br>这个中率很高.很多大站都喜欢放个phpinfo<br>看你路径字典强度.很容易跑出来的.</p>
+<p>6:邮件服务<br>有的服务器本地自带sendmail… 注册之后，会主动发一封邮件给我们。。。 好吧。。打开邮件的源代码。。 你就能看到服务器的真实Ip了。。。有的大型互联网网站会有自己的Mailserver…应该也是处在一个网段吧？？ 那个网段打开80的一个一个试。。。哈哈。。</p>
+<p>7：rss 订阅<br>一般也会得到真实的IP地址</p>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
